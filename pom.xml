@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.healthnlp</groupId>
+    <artifactId>deepphe-examples</artifactId>
+    <version>0.7.1</version>
+    <name>deepphe-examples</name>
+    <description>Cancer Deep Phenotype Extraction (DeepPhe) Examples</description>
+    <packaging>jar</packaging>
+
+    <properties>
+        <deepphe.version>0.7.1</deepphe.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+    </properties>
+
+    <build>
+        <finalName>deepphe-examples</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <!--	Copy resources that should not be user-editable for testing without recompiling.  -->
+                        <!--	Permanent edits must be made in src/main/resources -->
+                        <id>copy-main-resources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${project.basedir}/resources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>DeepPhe-Robot</name>
+            <url>https://maven.pkg.github.com/DeepPhe/dphe-examples</url>
+        </repository>
+    </distributionManagement>
+
+</project>
